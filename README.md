@@ -1,2 +1,3 @@
 # test-openshift
-just test Openshift and tox
+Just test Openshift and tox in a sample project.
+
