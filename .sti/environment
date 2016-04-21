@@ -1,3 +1,3 @@
 #APP_FILE=/usr/bin/tox 
 APP_FILE=app.py
-SQLALCHEMY_DATABASE_URI=mysql+pymysql://root:root@172.17.0.4/test
+#SQLALCHEMY_DATABASE_URI=mysql+pymysql://root:root@172.17.0.4/test

@@ -4,7 +4,10 @@ import simplejson
 import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI', 'sqlite:////tmp/test.db')
+try:
+    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://test:test@{MYSQL_SERVICE_HOST}:{MYSQL_SERVICE_PORT}/test".format(**os.environ)
+except KeyError:
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 db = SQLAlchemy(app)
 
 
@@ -36,10 +39,14 @@ def listalo():
 def help():
     return """
     <html><body>
+    Connected to {db}.
     <a href="/list/">List posts</a><br>
     <a href="/post/{random}">Submit post</a><br>
     </body></html>
-    """.format(random=randint(1,1000))
+    """.format(
+        db=db,
+        random=randint(1,1000)
+    )
 
 
 if __name__ == '__main__':
