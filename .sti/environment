@@ -1,1 +1,2 @@
-APP_FILE=/usr/bin/tox 
+#APP_FILE=/usr/bin/tox 
+APP_FILE=app.py

@@ -1,4 +1,6 @@
 pip==8.1.1
 wheel
 nose
-tox
+flask
+flask-sqlalchemy
+
