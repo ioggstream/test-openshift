@@ -3,4 +3,5 @@ wheel
 nose
 flask
 flask-sqlalchemy
+sqlalchemy
 
