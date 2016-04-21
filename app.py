@@ -18,6 +18,7 @@ class Tweet(db.Model):
     def __repr__(self):
         return '<tweet %r>' % self.tweet
 
+
 @app.route('/post/<txt>')
 def postalo(txt):
     t = Tweet(txt)
@@ -25,9 +26,21 @@ def postalo(txt):
     db.session.commit()
     return "ok"
 
+
 @app.route('/list')
 def listalo():
     return simplejson.dumps([str(x) for x in Tweet.query.all()])
+
+
+@app.route('/')
+def help():
+    return """
+    <html><body>
+    <a href="/list/">List posts</a><br>
+    <a href="/post/{random}">Submit post</a><br>
+    </body></html>
+    """.format(random=randint(1,1000))
+
 
 if __name__ == '__main__':
     db.create_all()
