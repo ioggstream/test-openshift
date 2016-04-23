@@ -8,4 +8,5 @@ ADD . /code
 WORKDIR /code
 RUN pip install -U pip
 RUN pip install -rrequirements.txt
+EXPOSE 8080
 CMD bash /code/entrypoint.sh
