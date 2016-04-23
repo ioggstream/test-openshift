@@ -5,4 +5,6 @@ ADD . /code
 WORKDIR /code
 RUN pip install -U pip
 RUN pip install -rrequirements.txt
+
+USER 1001
 CMD python app.py
