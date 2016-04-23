@@ -22,6 +22,9 @@ class Tweet(db.Model):
     def __repr__(self):
         return '<tweet %r>' % self.tweet
 
+    def __str__(self):
+        return self.tweet
+
 
 @app.route('/post/<txt>')
 def postalo(txt):
@@ -41,11 +44,11 @@ def help():
     return """
     <html><body>
     Connected to {db}.
-    <a href="/list/">List posts</a><br>
+    <a href="/list">List posts</a><br>
     <a href="/post/{random}">Submit post</a><br>
     </body></html>
     """.format(
-        db=db,
+        db=db.session,
         random=randint(1,1000)
     )
 
