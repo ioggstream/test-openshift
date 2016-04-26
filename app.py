@@ -46,10 +46,12 @@ def help():
     Connected to {db}.
     <a href="/list">List posts</a><br>
     <a href="/post/{random}">Submit post</a><br>
+    {posts}
     </body></html>
     """.format(
         db=db.session,
-        random=randint(1,1000)
+        random=randint(1,1000),
+	posts='<br>'.join(str(x) for x in Tweet.query.all())
     )
 
 
